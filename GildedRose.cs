@@ -43,21 +43,7 @@ namespace RefactoringKata
 
                         if (item.Name == BACKSTAGE_PASS)
                         {
-                            if (item.SellIn < 11)
-                            {
-                                if (item.Quality < 50)
-                                {
-                                    IncreaseQuality(item);
-                                }
-                            }
-
-                            if (item.SellIn < 6)
-                            {
-                                if (item.Quality < 50)
-                                {
-                                    IncreaseQuality(item);
-                                }
-                            }
+                            UpdateBackstagePass(item);
                         }
                     }
                 }
@@ -78,7 +64,7 @@ namespace RefactoringKata
                         }
                         else
                         {
-                            item.Quality = item.Quality - item.Quality;
+                            item.Quality = 0;
                         }
                     }
                     else
@@ -88,6 +74,29 @@ namespace RefactoringKata
                             IncreaseQuality(item);
                         }
                     }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Updates the quality of the <paramref name="backstagePass"/>.
+        /// </summary>
+        /// <param name="backstagePass">Backstage pass.</param>
+        private static void UpdateBackstagePass(Item backstagePass)
+        {
+            if (backstagePass.SellIn < 11)
+            {
+                if (backstagePass.Quality < 50)
+                {
+                    IncreaseQuality(backstagePass);
+                }
+            }
+
+            if (backstagePass.SellIn < 6)
+            {
+                if (backstagePass.Quality < 50)
+                {
+                    IncreaseQuality(backstagePass);
                 }
             }
         }
