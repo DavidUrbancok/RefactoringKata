@@ -7,6 +7,12 @@ namespace RefactoringKata
     public class GildedRoseTest
     {
         [Test]
+        public void OrdinaryItem_DayPasses_QualityDecreases()
+        {
+
+        }
+
+        [Test]
         public void foo()
         {
             IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };

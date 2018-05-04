@@ -4,7 +4,7 @@ namespace RefactoringKata
 {
     public class GildedRose
     {
-        private readonly IList<Item> Items;
+        private IList<Item> Items;
 
 
         public GildedRose(IList<Item> items)

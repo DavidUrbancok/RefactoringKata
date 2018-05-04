@@ -5,17 +5,24 @@ namespace RefactoringKata
 {
     public class Program
     {
+        public const string AGED_BRIE = "Aged Brie";
+        public const string ELIXIR = "Elixir of the Mongoose";
+        public const string DEXTERITY_VEST = "+5 Dexterity Vest";
+        public const string SULFURAS = "Sulfuras, Hand of Ragnaros";
+        public const string BACKSTAGE_PASS = "Backstage passes to a TAFKAL80ETC concert";
+
+
         public static void Main(string[] args)
         {
             IList<Item> items = new List<Item> {
-                new Item { Name = "+5 Dexterity Vest",                         SellIn = 10, Quality = 20 },
-                new Item { Name = "Aged Brie",                                 SellIn = 2,  Quality = 0  },
-                new Item { Name = "Elixir of the Mongoose",                    SellIn = 5,  Quality = 7  },
-                new Item { Name = "Sulfuras, Hand of Ragnaros",                SellIn = 0,  Quality = 80 },
-                new Item { Name = "Sulfuras, Hand of Ragnaros",                SellIn = -1, Quality = 80 },
-                new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 15, Quality = 20 },
-                new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 49 },
-                new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5,  Quality = 49 },
+                new Item { Name = DEXTERITY_VEST, SellIn = 10, Quality = 20 },
+                new Item { Name = AGED_BRIE,      SellIn = 2,  Quality = 0  },
+                new Item { Name = ELIXIR,         SellIn = 5,  Quality = 7  },
+                new Item { Name = SULFURAS,       SellIn = 0,  Quality = 80 },
+                new Item { Name = SULFURAS,       SellIn = -1, Quality = 80 },
+                new Item { Name = BACKSTAGE_PASS, SellIn = 15, Quality = 20 },
+                new Item { Name = BACKSTAGE_PASS, SellIn = 10, Quality = 49 },
+                new Item { Name = BACKSTAGE_PASS, SellIn = 5,  Quality = 49 },
 
 				// this conjured item does not work properly yet
 				new Item { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 }
