@@ -26,51 +26,35 @@ namespace RefactoringKata
             {
                 DecreseSellInDays(item);
 
+                var isAfterSellInDate = item.SellIn < 0;
+
                 switch (item.Name)
                 {
                     case AGED_BRIE:
                     {
-                        IncreaseQuality(item);
+                        IncreaseQuality(item, isAfterSellInDate);
 
                         break;
                     }
                     case BACKSTAGE_PASS:
                     {
-                        IncreaseQuality(item);
-                        UpdateBackstagePass(item);
+                        if (isAfterSellInDate)
+                        {
+                            item.Quality = 0;
+                        }
+                        else
+                        {
+                            IncreaseQuality(item);
+                            UpdateBackstagePass(item);
+                        }
 
                         break;
                     }
                     default:
                     {
-                        DecreaseQuality(item);
+                        DecreaseQuality(item, isAfterSellInDate);
 
                         break;
-                    }
-                }
-
-                if (item.SellIn < 0)
-                {
-                    switch (item.Name)
-                    {
-                        case AGED_BRIE:
-                        {
-                            IncreaseQuality(item);
-
-                            break;
-                        }
-                        case BACKSTAGE_PASS:
-                        {
-                            item.Quality = 0;
-
-                            break;
-                        }
-                        default:
-                        {
-                            DecreaseQuality(item);
-
-                            break;
-                        }
                     }
                 }
             }
@@ -97,15 +81,6 @@ namespace RefactoringKata
         }
 
         /// <summary>
-        /// Updates the sell in days of <paramref name="item"/>.
-        /// </summary>
-        /// <param name="item">Item of which to update sell in days.</param>
-        private static void UpdateSellInDays(Item item)
-        {
-            DecreseSellInDays(item);
-        }
-
-        /// <summary>
         /// Decreases the number of days to sell in.
         /// </summary>
         /// <param name="item">Item of which to decrease the sell in days.</param>
@@ -118,11 +93,19 @@ namespace RefactoringKata
         /// Increases the quality of <paramref name="item"/>.
         /// </summary>
         /// <param name="item">Item the quality of which to increase.</param>
-        private static void IncreaseQuality(Item item)
+        /// <param name="isAfterSellInDate"></param>
+        private static void IncreaseQuality(Item item, bool isAfterSellInDate = false)
         {
             if (item.Quality < 50)
             {
-                item.Quality += 1;
+                if (isAfterSellInDate)
+                {
+                    item.Quality += 2;
+                }
+                else
+                {
+                    item.Quality += 1;
+                }
             }
         }
 
@@ -130,11 +113,19 @@ namespace RefactoringKata
         /// Decreases the quality of <paramref name="item"/>.
         /// </summary>
         /// <param name="item">Item the quality of which to decrease.</param>
-        private static void DecreaseQuality(Item item)
+        /// <param name="isAfterSellInDate"></param>
+        private static void DecreaseQuality(Item item, bool isAfterSellInDate = false)
         {
             if (item.Quality > 0)
             {
-                item.Quality -= 1;
+                if (isAfterSellInDate)
+                {
+                    item.Quality -= 2;
+                }
+                else
+                {
+                    item.Quality -= 1;
+                }
             }
         }
     }
