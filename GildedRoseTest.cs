@@ -126,7 +126,7 @@ namespace RefactoringKata
         [Test]
         public void BackstagePass_AfterSellDate_DayPasses_QualityIsZero()
         {
-            Items = new List<Item> { new Item { Name = BACKSTAGE_PASS, SellIn = 0, Quality = 10 } };
+            Items = new List<Item> {new Item {Name = BACKSTAGE_PASS, SellIn = 0, Quality = 10}};
 
             var app = new GildedRose(Items);
             app.UpdateQuality();
@@ -137,7 +137,7 @@ namespace RefactoringKata
         [Test]
         public void BackstagePassWithMaxQuality_DayPasses_QualityIsFifty()
         {
-            Items = new List<Item> { new Item { Name = BACKSTAGE_PASS, SellIn = 2, Quality = 48 } };
+            Items = new List<Item> {new Item {Name = BACKSTAGE_PASS, SellIn = 2, Quality = 48}};
 
             var app = new GildedRose(Items);
             app.UpdateQuality();

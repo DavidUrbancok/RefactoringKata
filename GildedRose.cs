@@ -23,7 +23,7 @@ namespace RefactoringKata
                     {
                         if (item.Name != "Sulfuras, Hand of Ragnaros")
                         {
-                            item.Quality = item.Quality - 1;
+                            DecreaseQuality(item);
                         }
                     }
                 }
@@ -39,7 +39,7 @@ namespace RefactoringKata
                             {
                                 if (item.Quality < 50)
                                 {
-                                    item.Quality = item.Quality + 1;
+                                    IncreaseQuality(item);
                                 }
                             }
 
@@ -69,7 +69,7 @@ namespace RefactoringKata
                             {
                                 if (item.Name != "Sulfuras, Hand of Ragnaros")
                                 {
-                                    item.Quality = item.Quality - 1;
+                                    DecreaseQuality(item);
                                 }
                             }
                         }
@@ -87,6 +87,24 @@ namespace RefactoringKata
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Increases the quality of <paramref name="item"/>.
+        /// </summary>
+        /// <param name="item">Item the quality of which to increase.</param>
+        private static void IncreaseQuality(Item item)
+        {
+            item.Quality += 1;
+        }
+
+        /// <summary>
+        /// Decreases the quality of <paramref name="item"/>.
+        /// </summary>
+        /// <param name="item">Item the quality of which to decrease.</param>
+        private static void DecreaseQuality(Item item)
+        {
+            item.Quality -= 1;
         }
     }
 }
