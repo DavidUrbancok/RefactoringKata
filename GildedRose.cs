@@ -26,19 +26,27 @@ namespace RefactoringKata
             {
                 DecreseSellInDays(item);
 
-                if (item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASS)
+                switch (item.Name)
                 {
-                    DecreaseQuality(item);
-                }
-                else
-                {
-                    IncreaseQuality(item);
-
-                    if (item.Name == BACKSTAGE_PASS)
+                    case AGED_BRIE:
                     {
-                        UpdateBackstagePass(item);
+                        IncreaseQuality(item);
+
+                        break;
                     }
-                    
+                    case BACKSTAGE_PASS:
+                    {
+                        IncreaseQuality(item);
+                        UpdateBackstagePass(item);
+
+                        break;
+                    }
+                    default:
+                    {
+                        DecreaseQuality(item);
+
+                        break;
+                    }
                 }
 
                 if (item.SellIn < 0)
