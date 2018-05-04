@@ -133,5 +133,16 @@ namespace RefactoringKata
 
             Assert.That(Items.First().Quality, Is.EqualTo(0));
         }
+
+        [Test]
+        public void BackstagePassWithMaxQuality_DayPasses_QualityIsFifty()
+        {
+            Items = new List<Item> { new Item { Name = BACKSTAGE_PASS, SellIn = 2, Quality = 48 } };
+
+            var app = new GildedRose(Items);
+            app.UpdateQuality();
+
+            Assert.That(Items.First().Quality, Is.EqualTo(50));
+        }
     }
 }
