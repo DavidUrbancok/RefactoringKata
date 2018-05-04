@@ -26,23 +26,23 @@ namespace RefactoringKata
             {
                 DecreseSellInDays(item);
 
-                var isAfterSellInDate = item.SellIn < 0;
+                var qualityChangeRate = GetQualityChangeRate(item.SellIn);
 
                 switch (item.Name)
                 {
                     case AGED_BRIE:
                     {
-                        IncreaseQuality(item, isAfterSellInDate);
+                        IncreaseQuality(item, qualityChangeRate);
                         break;
                     }
                     case BACKSTAGE_PASS:
                     {
-                        ProcessBackstagePass(item, isAfterSellInDate);
+                        ProcessBackstagePass(item, qualityChangeRate);
                         break;
                     }
                     default:
                     {
-                        DecreaseQuality(item, isAfterSellInDate);
+                        DecreaseQuality(item, qualityChangeRate);
                         break;
                     }
                 }
@@ -50,20 +50,27 @@ namespace RefactoringKata
         }
 
         /// <summary>
-        /// 
+        /// Returns 2 if the sell in date is less than 0. Otherwise, returns 1.
         /// </summary>
-        /// <param name="item"></param>
-        /// <param name="isAfterSellInDate"></param>
-        private static void ProcessBackstagePass(Item item, bool isAfterSellInDate)
+        /// <param name="itemSellIn">Days remaining to sell.</param>
+        private static int GetQualityChangeRate(int itemSellIn) => itemSellIn < 0 ? 2 : 1;
+
+        /// <summary>
+        /// Processes the backstage pass.
+        /// </summary>
+        /// <param name="backstagePass">Backstagepass to process.</param>
+        /// <param name="qualityChangeRate">Change rate of item's quality.</param>
+        /// 
+        private static void ProcessBackstagePass(Item backstagePass, int qualityChangeRate)
         {
-            if (isAfterSellInDate)
+            if (qualityChangeRate == 2)
             {
-                item.Quality = 0;
+                backstagePass.Quality = 0;
             }
             else
             {
-                IncreaseQuality(item);
-                UpdateBackstagePass(item);
+                IncreaseQuality(backstagePass, 1);
+                UpdateBackstagePass(backstagePass);
             }
         }
 
@@ -77,12 +84,12 @@ namespace RefactoringKata
             {
                 if (backstagePass.SellIn < 11)
                 {
-                    IncreaseQuality(backstagePass);
+                    IncreaseQuality(backstagePass, 1);
                 }
 
                 if (backstagePass.SellIn < 6)
                 {
-                    IncreaseQuality(backstagePass);
+                    IncreaseQuality(backstagePass, 1);
                 }
             }
         }
@@ -100,19 +107,12 @@ namespace RefactoringKata
         /// Increases the quality of <paramref name="item"/>.
         /// </summary>
         /// <param name="item">Item the quality of which to increase.</param>
-        /// <param name="isAfterSellInDate"></param>
-        private static void IncreaseQuality(Item item, bool isAfterSellInDate = false)
+        /// <param name="qualityChangeRate">Change rate of item's quality.</param>
+        private static void IncreaseQuality(Item item, int qualityChangeRate)
         {
             if (item.Quality < 50)
             {
-                if (isAfterSellInDate)
-                {
-                    item.Quality += 2;
-                }
-                else
-                {
-                    item.Quality += 1;
-                }
+                item.Quality += qualityChangeRate;
             }
         }
 
@@ -120,19 +120,12 @@ namespace RefactoringKata
         /// Decreases the quality of <paramref name="item"/>.
         /// </summary>
         /// <param name="item">Item the quality of which to decrease.</param>
-        /// <param name="isAfterSellInDate"></param>
-        private static void DecreaseQuality(Item item, bool isAfterSellInDate = false)
+        /// <param name="qualityChangeRate">Change rate of item's quality.</param>
+        private static void DecreaseQuality(Item item, int qualityChangeRate)
         {
             if (item.Quality > 0)
             {
-                if (isAfterSellInDate)
-                {
-                    item.Quality -= 2;
-                }
-                else
-                {
-                    item.Quality -= 1;
-                }
+                item.Quality -= qualityChangeRate;
             }
         }
     }
