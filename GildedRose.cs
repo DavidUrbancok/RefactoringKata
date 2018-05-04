@@ -24,7 +24,7 @@ namespace RefactoringKata
         {
             foreach (var item in Items.Where(item => item.Name != SULFURAS))
             {
-                UpdateSellInDays(item);
+                DecreseSellInDays(item);
 
                 if (item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASS)
                 {
@@ -70,30 +70,18 @@ namespace RefactoringKata
         /// <param name="backstagePass">Backstage pass.</param>
         private static void UpdateBackstagePass(Item backstagePass)
         {
-            if (backstagePass.SellIn < 11)
+            if (backstagePass.Quality < 50)
             {
-                if (backstagePass.Quality < 50)
+                if (backstagePass.SellIn < 11)
+                {
+                    IncreaseQuality(backstagePass);
+                }
+
+                if (backstagePass.SellIn < 6)
                 {
                     IncreaseQuality(backstagePass);
                 }
             }
-
-            if (backstagePass.SellIn < 6)
-            {
-                if (backstagePass.Quality < 50)
-                {
-                    IncreaseQuality(backstagePass);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Updates the sell in days of <paramref name="item"/>.
-        /// </summary>
-        /// <param name="item">Item of which to update sell in days.</param>
-        private static void UpdateSellInDays(Item item)
-        {
-            DecreseSellInDays(item);
         }
 
         /// <summary>
