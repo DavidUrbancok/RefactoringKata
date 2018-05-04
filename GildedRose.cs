@@ -32,15 +32,13 @@ namespace RefactoringKata
                 }
                 else
                 {
-                    if (item.Quality < 50)
-                    {
-                        IncreaseQuality(item);
+                    IncreaseQuality(item);
 
-                        if (item.Name == BACKSTAGE_PASS)
-                        {
-                            UpdateBackstagePass(item);
-                        }
+                    if (item.Name == BACKSTAGE_PASS)
+                    {
+                        UpdateBackstagePass(item);
                     }
+                    
                 }
 
                 if (item.SellIn < 0)
@@ -82,6 +80,15 @@ namespace RefactoringKata
                     IncreaseQuality(backstagePass);
                 }
             }
+        }
+
+        /// <summary>
+        /// Updates the sell in days of <paramref name="item"/>.
+        /// </summary>
+        /// <param name="item">Item of which to update sell in days.</param>
+        private static void UpdateSellInDays(Item item)
+        {
+            DecreseSellInDays(item);
         }
 
         /// <summary>
