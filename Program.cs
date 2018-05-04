@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace csharp
+namespace RefactoringKata
 {
     public class Program
     {
@@ -51,6 +51,8 @@ namespace csharp
                 Console.WriteLine("");
                 app.UpdateQuality();
             }
+
+            Console.ReadKey();
         }
     }
 }

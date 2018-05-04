@@ -8,8 +8,8 @@
     <ProjectGuid>{176C0214-9136-4079-8DAB-11D7420C3881}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>csharp</RootNamespace>
-    <AssemblyName>csharp</AssemblyName>
+    <RootNamespace>RefactoringKata</RootNamespace>
+    <AssemblyName>RefactoringKata</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -1,4 +1,4 @@
-﻿namespace csharp
+﻿namespace RefactoringKata
 {
     public class Item
     {

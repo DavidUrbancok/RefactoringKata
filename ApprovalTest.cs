@@ -5,7 +5,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace csharp
+namespace RefactoringKata
 {
     [TestFixture]
     [UseReporter(typeof(NUnitReporter))]

@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace csharp
+namespace RefactoringKata
 {
     [TestFixture]
     public class GildedRoseTest
