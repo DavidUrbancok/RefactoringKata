@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using static RefactoringKata.Program;
 
 namespace RefactoringKata
 {
     public class GildedRose
     {
-        private IList<Item> Items;
+        private readonly IList<Item> Items;
         
         /// <summary>
         /// Constructor.
@@ -24,11 +25,11 @@ namespace RefactoringKata
             {
                 UpdateSellInDays(item);
 
-                if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
+                if (item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASS)
                 {
                     if (item.Quality > 0)
                     {
-                        if (item.Name != "Sulfuras, Hand of Ragnaros")
+                        if (item.Name != SULFURAS)
                         {
                             DecreaseQuality(item);
                         }
@@ -40,7 +41,7 @@ namespace RefactoringKata
                     {
                         IncreaseQuality(item);
 
-                        if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                        if (item.Name == BACKSTAGE_PASS)
                         {
                             if (item.SellIn < 11)
                             {
@@ -63,13 +64,13 @@ namespace RefactoringKata
 
                 if (item.SellIn < 0)
                 {
-                    if (item.Name != "Aged Brie")
+                    if (item.Name != AGED_BRIE)
                     {
-                        if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
+                        if (item.Name != BACKSTAGE_PASS)
                         {
                             if (item.Quality > 0)
                             {
-                                if (item.Name != "Sulfuras, Hand of Ragnaros")
+                                if (item.Name != SULFURAS)
                                 {
                                     DecreaseQuality(item);
                                 }
@@ -97,7 +98,7 @@ namespace RefactoringKata
         /// <param name="item">Item of which to update sell in days.</param>
         private static void UpdateSellInDays(Item item)
         {
-            if (item.Name != "Sulfuras, Hand of Ragnaros")
+            if (item.Name != SULFURAS)
             {
                 DecreseSellInDays(item);
             }
