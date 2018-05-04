@@ -51,20 +51,26 @@ namespace RefactoringKata
 
                 if (item.SellIn < 0)
                 {
-                    if (item.Name != AGED_BRIE)
+                    switch (item.Name)
                     {
-                        if (item.Name != BACKSTAGE_PASS)
+                        case AGED_BRIE:
                         {
-                            DecreaseQuality(item);
+                            IncreaseQuality(item);
+
+                            break;
                         }
-                        else
+                        case BACKSTAGE_PASS:
                         {
                             item.Quality = 0;
+
+                            break;
                         }
-                    }
-                    else
-                    {
-                        IncreaseQuality(item);
+                        default:
+                        {
+                            DecreaseQuality(item);
+
+                            break;
+                        }
                     }
                 }
             }
