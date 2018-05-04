@@ -45,5 +45,49 @@ namespace RefactoringKata
 
             Assert.That(Items.First().Quality, Is.EqualTo(quality - 2));
         }
+
+        [Test]
+        public void AgedBrie_DayPasses_QualityDecreases()
+        {
+            Items = new List<Item> { new Item { Name = AGED_BRIE, SellIn = 10, Quality = 10 } };
+
+            var app = new GildedRose(Items);
+            app.UpdateQuality();
+
+            Assert.That(Items.First().Quality, Is.EqualTo(11));
+        }
+
+        [Test]
+        public void AgedBrieWithMaximumQuantity_DayPasses_QualityDoesNotIncrease()
+        {
+            Items = new List<Item> { new Item { Name = AGED_BRIE, SellIn = 100, Quality = 50 } };
+
+            var app = new GildedRose(Items);
+            app.UpdateQuality();
+
+            Assert.That(Items.First().Quality, Is.EqualTo(50));
+        }
+
+        [Test]
+        public void Sulfuras_DayPasses_QualityDoesNotChange()
+        {
+            Items = new List<Item> { new Item { Name = SULFURAS, SellIn = 10, Quality = 10 } };
+
+            var app = new GildedRose(Items);
+            app.UpdateQuality();
+
+            Assert.That(Items.First().Quality, Is.EqualTo(10));
+        }
+
+        [Test]
+        public void Sulfuras_DayPasses_SellInDoesNotChange()
+        {
+            Items = new List<Item> { new Item { Name = SULFURAS, SellIn = 10, Quality = 10 } };
+
+            var app = new GildedRose(Items);
+            app.UpdateQuality();
+
+            Assert.That(Items.First().SellIn, Is.EqualTo(10));
+        }
     }
 }
