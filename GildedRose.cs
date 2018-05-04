@@ -93,10 +93,7 @@ namespace RefactoringKata
         /// <param name="item">Item of which to update sell in days.</param>
         private static void UpdateSellInDays(Item item)
         {
-            if (item.Name != SULFURAS)
-            {
-                DecreseSellInDays(item);
-            }
+            DecreseSellInDays(item);
         }
 
         /// <summary>
