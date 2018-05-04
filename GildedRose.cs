@@ -33,30 +33,37 @@ namespace RefactoringKata
                     case AGED_BRIE:
                     {
                         IncreaseQuality(item, isAfterSellInDate);
-
                         break;
                     }
                     case BACKSTAGE_PASS:
                     {
-                        if (isAfterSellInDate)
-                        {
-                            item.Quality = 0;
-                        }
-                        else
-                        {
-                            IncreaseQuality(item);
-                            UpdateBackstagePass(item);
-                        }
-
+                        ProcessBackstagePass(item, isAfterSellInDate);
                         break;
                     }
                     default:
                     {
                         DecreaseQuality(item, isAfterSellInDate);
-
                         break;
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="isAfterSellInDate"></param>
+        private static void ProcessBackstagePass(Item item, bool isAfterSellInDate)
+        {
+            if (isAfterSellInDate)
+            {
+                item.Quality = 0;
+            }
+            else
+            {
+                IncreaseQuality(item);
+                UpdateBackstagePass(item);
             }
         }
 
