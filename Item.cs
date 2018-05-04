@@ -18,5 +18,10 @@ namespace RefactoringKata
         /// Remaining quality indicator of an item.
         /// </summary>
         public int Quality { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name}, {SellIn}, {Quality}";
+        }
     }
 }

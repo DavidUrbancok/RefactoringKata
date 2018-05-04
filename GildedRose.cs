@@ -5,18 +5,25 @@ namespace RefactoringKata
     public class GildedRose
     {
         private IList<Item> Items;
-
-
+        
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="items">Items of sale.</param>
         public GildedRose(IList<Item> items)
         {
             Items = items;
         }
 
-
+        /// <summary>
+        /// Updates the quality of all items of sale.
+        /// </summary>
         public void UpdateQuality()
         {
             foreach (var item in Items)
             {
+                UpdateSellInDays(item);
+
                 if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
                 {
                     if (item.Quality > 0)
@@ -31,7 +38,7 @@ namespace RefactoringKata
                 {
                     if (item.Quality < 50)
                     {
-                        item.Quality = item.Quality + 1;
+                        IncreaseQuality(item);
 
                         if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
                         {
@@ -47,16 +54,11 @@ namespace RefactoringKata
                             {
                                 if (item.Quality < 50)
                                 {
-                                    item.Quality = item.Quality + 1;
+                                    IncreaseQuality(item);
                                 }
                             }
                         }
                     }
-                }
-
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    item.SellIn = item.SellIn - 1;
                 }
 
                 if (item.SellIn < 0)
@@ -82,11 +84,32 @@ namespace RefactoringKata
                     {
                         if (item.Quality < 50)
                         {
-                            item.Quality = item.Quality + 1;
+                            IncreaseQuality(item);
                         }
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Updates the sell in days of <paramref name="item"/>.
+        /// </summary>
+        /// <param name="item">Item of which to update sell in days.</param>
+        private static void UpdateSellInDays(Item item)
+        {
+            if (item.Name != "Sulfuras, Hand of Ragnaros")
+            {
+                DecreseSellInDays(item);
+            }
+        }
+
+        /// <summary>
+        /// Decreases the number of days to sell in.
+        /// </summary>
+        /// <param name="item">Item of which to decrease the sell in days.</param>
+        private static void DecreseSellInDays(Item item)
+        {
+            item.SellIn -= 1;
         }
 
         /// <summary>

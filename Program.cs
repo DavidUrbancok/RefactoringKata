@@ -39,7 +39,7 @@ namespace RefactoringKata
 
                 foreach (var item in items)
                 {
-                    Console.WriteLine($"{item.Name}, {item.SellIn}, {item.Quality}");
+                    Console.WriteLine(item.ToString());
                 }
 
                 Console.WriteLine();
