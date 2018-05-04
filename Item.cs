@@ -1,4 +1,6 @@
-﻿namespace RefactoringKata
+﻿using System;
+
+namespace RefactoringKata
 {
     public class Item
     {
