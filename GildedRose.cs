@@ -28,10 +28,7 @@ namespace RefactoringKata
 
                 if (item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASS)
                 {
-                    if (item.Quality > 0)
-                    {
-                        DecreaseQuality(item);
-                    }
+                    DecreaseQuality(item);
                 }
                 else
                 {
@@ -52,10 +49,7 @@ namespace RefactoringKata
                     {
                         if (item.Name != BACKSTAGE_PASS)
                         {
-                            if (item.Quality > 0)
-                            {
-                                DecreaseQuality(item);
-                            }
+                            DecreaseQuality(item);
                         }
                         else
                         {
@@ -64,10 +58,7 @@ namespace RefactoringKata
                     }
                     else
                     {
-                        if (item.Quality < 50)
-                        {
-                            IncreaseQuality(item);
-                        }
+                        IncreaseQuality(item);
                     }
                 }
             }
@@ -123,7 +114,10 @@ namespace RefactoringKata
         /// <param name="item">Item the quality of which to increase.</param>
         private static void IncreaseQuality(Item item)
         {
-            item.Quality += 1;
+            if (item.Quality < 50)
+            {
+                item.Quality += 1;
+            }
         }
 
         /// <summary>
@@ -132,7 +126,10 @@ namespace RefactoringKata
         /// <param name="item">Item the quality of which to decrease.</param>
         private static void DecreaseQuality(Item item)
         {
-            item.Quality -= 1;
+            if (item.Quality > 0)
+            {
+                item.Quality -= 1;
+            }
         }
     }
 }
