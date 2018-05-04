@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using static RefactoringKata.Program;
+using static RefactoringKata.SaleItems;
 
 namespace RefactoringKata
 {
