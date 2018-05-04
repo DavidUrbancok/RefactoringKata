@@ -10,6 +10,7 @@ namespace RefactoringKata
         public const string DEXTERITY_VEST = "+5 Dexterity Vest";
         public const string SULFURAS = "Sulfuras, Hand of Ragnaros";
         public const string BACKSTAGE_PASS = "Backstage passes to a TAFKAL80ETC concert";
+        public const string CONJURED_MANA = "Conjured Mana Cake";
 
 
         public static void Main(string[] args)
@@ -25,7 +26,7 @@ namespace RefactoringKata
                 new Item { Name = BACKSTAGE_PASS, SellIn = 5,  Quality = 49 },
 
 				// this conjured item does not work properly yet
-				new Item { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 }
+				new Item { Name = CONJURED_MANA, SellIn = 3, Quality = 6 }
             };
 
             var app = new GildedRose(items);
