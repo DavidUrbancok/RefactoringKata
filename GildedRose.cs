@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using static RefactoringKata.SaleItems;
 
 namespace RefactoringKata
@@ -21,14 +22,9 @@ namespace RefactoringKata
         /// </summary>
         public void UpdateQuality()
         {
-            foreach (var item in Items)
+            foreach (var item in Items.Where(item => item.Name != SULFURAS))
             {
                 UpdateSellInDays(item);
-
-                if (item.Name == SULFURAS)
-                {
-                    continue;
-                }
 
                 if (item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASS)
                 {
