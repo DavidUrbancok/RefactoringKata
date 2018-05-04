@@ -25,14 +25,16 @@ namespace RefactoringKata
             {
                 UpdateSellInDays(item);
 
+                if (item.Name == SULFURAS)
+                {
+                    continue;
+                }
+
                 if (item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASS)
                 {
                     if (item.Quality > 0)
                     {
-                        if (item.Name != SULFURAS)
-                        {
-                            DecreaseQuality(item);
-                        }
+                        DecreaseQuality(item);
                     }
                 }
                 else
@@ -56,10 +58,7 @@ namespace RefactoringKata
                         {
                             if (item.Quality > 0)
                             {
-                                if (item.Name != SULFURAS)
-                                {
-                                    DecreaseQuality(item);
-                                }
+                                DecreaseQuality(item);
                             }
                         }
                         else
