@@ -40,6 +40,11 @@ namespace RefactoringKata
                         ProcessBackstagePass(item, item.SellIn);
                         break;
                     }
+                    case CONJURED_MANA:
+                    {
+                        DecreaseQuality(item, 2 * qualityChangeRate);
+                        break;
+                    }
                     default:
                     {
                         DecreaseQuality(item, qualityChangeRate);
