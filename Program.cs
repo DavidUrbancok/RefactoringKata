@@ -17,14 +17,11 @@ namespace RefactoringKata
                 new Item { Name = BACKSTAGE_PASS, SellIn = 15, Quality = 20 },
                 new Item { Name = BACKSTAGE_PASS, SellIn = 10, Quality = 49 },
                 new Item { Name = BACKSTAGE_PASS, SellIn = 5,  Quality = 49 },
-
-				// this conjured item does not work properly yet
-				new Item { Name = CONJURED_MANA, SellIn = 3, Quality = 6 }
+				new Item { Name = CONJURED_MANA,  SellIn = 3,  Quality = 6  }
             };
 
             var app = new GildedRose(items);
-
-
+            
             for (var i = 0; i < 31; i++)
             {
                 Console.WriteLine($"-------- day {i} --------");
@@ -39,8 +36,6 @@ namespace RefactoringKata
 
                 app.UpdateQuality();
             }
-
-            //Console.ReadKey();
         }
     }
 }
