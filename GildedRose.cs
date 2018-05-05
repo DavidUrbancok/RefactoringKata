@@ -37,7 +37,7 @@ namespace RefactoringKata
                     }
                     case BACKSTAGE_PASS:
                     {
-                        ProcessBackstagePass(item, qualityChangeRate);
+                        ProcessBackstagePass(item, item.SellIn);
                         break;
                     }
                     default:
@@ -58,40 +58,35 @@ namespace RefactoringKata
         /// <summary>
         /// Processes the backstage pass.
         /// </summary>
-        /// <param name="backstagePass">Backstagepass to process.</param>
-        /// <param name="qualityChangeRate">Change rate of item's quality.</param>
+        /// <param name="backstagePass">Backstage pass to process.</param>
+        /// <param name="sellIn">Number of days left to sell.</param>
         /// 
-        private static void ProcessBackstagePass(Item backstagePass, int qualityChangeRate)
+        private static void ProcessBackstagePass(Item backstagePass, int sellIn)
         {
-            if (qualityChangeRate == 2)
+            if (sellIn < 0)
             {
                 backstagePass.Quality = 0;
+
+                return;
             }
-            else
-            {
-                IncreaseQuality(backstagePass, 1);
-                UpdateBackstagePass(backstagePass);
-            }
+
+            var qualityIncreaseRate = GetQualityIncreaseRate(sellIn);
+
+            IncreaseQuality(backstagePass, qualityIncreaseRate);
         }
 
         /// <summary>
-        /// Updates the quality of the <paramref name="backstagePass"/>.
+        /// Returns the quality increase rate based on <paramref name="sellIn"/>.
         /// </summary>
-        /// <param name="backstagePass">Backstage pass.</param>
-        private static void UpdateBackstagePass(Item backstagePass)
+        /// <param name="sellIn">Number of days left to sell.</param>
+        private static int GetQualityIncreaseRate(int sellIn)
         {
-            if (backstagePass.Quality < 50)
+            if (sellIn < 6)
             {
-                if (backstagePass.SellIn < 11)
-                {
-                    IncreaseQuality(backstagePass, 1);
-                }
-
-                if (backstagePass.SellIn < 6)
-                {
-                    IncreaseQuality(backstagePass, 1);
-                }
+                return 3;
             }
+
+            return sellIn < 11 ? 2 : 1;
         }
 
         /// <summary>
@@ -110,9 +105,11 @@ namespace RefactoringKata
         /// <param name="qualityChangeRate">Change rate of item's quality.</param>
         private static void IncreaseQuality(Item item, int qualityChangeRate)
         {
-            if (item.Quality < 50)
+            if (item.Quality < MAX_QUALITY)
             {
-                item.Quality += qualityChangeRate;
+                var qualitySum = item.Quality + qualityChangeRate;
+
+                item.Quality = qualitySum > MAX_QUALITY ? MAX_QUALITY : qualitySum;
             }
         }
 

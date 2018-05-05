@@ -8,5 +8,7 @@
         public const string SULFURAS = "Sulfuras, Hand of Ragnaros";
         public const string BACKSTAGE_PASS = "Backstage passes to a TAFKAL80ETC concert";
         public const string CONJURED_MANA = "Conjured Mana Cake";
+
+        public const int MAX_QUALITY = 50;
     }
 }
