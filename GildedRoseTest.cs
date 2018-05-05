@@ -24,7 +24,7 @@ namespace RefactoringKata
 
         [TestCase(ELIXIR, 10, 0)]
         [TestCase(DEXTERITY_VEST, 100, 0)]
-        public void OrdinaryItemWithZeroQuantity_DayPasses_QualityDoesNotDecrease(string name, int sellIn, int quality)
+        public void OrdinaryItemWithZeroQuality_DayPasses_QualityDoesNotDecrease(string name, int sellIn, int quality)
         {
             Items = new List<Item> {new Item {Name = name, SellIn = sellIn, Quality = quality}};
 
@@ -47,7 +47,7 @@ namespace RefactoringKata
         }
 
         [Test]
-        public void AgedBrie_DayPasses_QualityDecreases()
+        public void AgedBrie_DayPasses_QualityIncreases()
         {
             Items = new List<Item> {new Item {Name = AGED_BRIE, SellIn = 10, Quality = 10}};
 
@@ -58,7 +58,7 @@ namespace RefactoringKata
         }
 
         [Test]
-        public void AgedBrieWithMaximumQuantity_DayPasses_QualityDoesNotIncrease()
+        public void AgedBrieWithMaximumQuality_DayPasses_QualityDoesNotIncrease()
         {
             Items = new List<Item> {new Item {Name = AGED_BRIE, SellIn = 100, Quality = 50}};
 
