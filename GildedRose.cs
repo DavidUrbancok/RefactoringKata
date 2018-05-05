@@ -8,6 +8,7 @@ namespace RefactoringKata
     {
         private readonly IList<Item> Items;
         
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -16,6 +17,7 @@ namespace RefactoringKata
         {
             Items = items;
         }
+
 
         /// <summary>
         /// Updates the quality of all items of sale.
@@ -54,11 +56,13 @@ namespace RefactoringKata
             }
         }
 
+
         /// <summary>
         /// Returns 2 if the sell in date is less than 0. Otherwise, returns 1.
         /// </summary>
         /// <param name="itemSellIn">Days remaining to sell.</param>
         private static int GetQualityChangeRate(int itemSellIn) => itemSellIn < 0 ? 2 : 1;
+
 
         /// <summary>
         /// Processes the backstage pass.
@@ -80,6 +84,7 @@ namespace RefactoringKata
             IncreaseQuality(backstagePass, qualityIncreaseRate);
         }
 
+
         /// <summary>
         /// Returns the quality increase rate based on <paramref name="sellIn"/>.
         /// </summary>
@@ -94,6 +99,7 @@ namespace RefactoringKata
             return sellIn < 11 ? 2 : 1;
         }
 
+
         /// <summary>
         /// Decreases the number of days to sell in.
         /// </summary>
@@ -102,6 +108,7 @@ namespace RefactoringKata
         {
             item.SellIn -= 1;
         }
+
 
         /// <summary>
         /// Increases the quality of <paramref name="item"/>.
@@ -117,6 +124,7 @@ namespace RefactoringKata
                 item.Quality = qualitySum > MAX_QUALITY ? MAX_QUALITY : qualitySum;
             }
         }
+
 
         /// <summary>
         /// Decreases the quality of <paramref name="item"/>.
