@@ -144,5 +144,27 @@ namespace RefactoringKata
 
             Assert.That(Items.First().Quality, Is.EqualTo(50));
         }
+
+        [Test]
+        public void ConjuredMana_DayPasses_QualityDecreasesByTwo()
+        {
+            Items = new List<Item> {new Item {Name = CONJURED_MANA, SellIn = 10, Quality = 10}};
+
+            var app = new GildedRose(Items);
+            app.UpdateQuality();
+
+            Assert.That(Items.First().Quality, Is.EqualTo(8));
+        }
+
+        [Test]
+        public void ConjuredManaAfterSellDate_DayPasses_QualityDecreasesByFour()
+        {
+            Items = new List<Item> { new Item { Name = CONJURED_MANA, SellIn = 0, Quality = 10 } };
+
+            var app = new GildedRose(Items);
+            app.UpdateQuality();
+
+            Assert.That(Items.First().Quality, Is.EqualTo(6));
+        }
     }
 }
